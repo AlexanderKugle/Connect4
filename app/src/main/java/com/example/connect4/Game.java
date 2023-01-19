@@ -1,6 +1,7 @@
 package com.example.connect4;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Game
 {
@@ -101,6 +102,13 @@ public class Game
         turn = (turn + 1) % 2;
         clearBoard();
     }
+
+    public void aiTurn() {
+        int column = new Random().nextInt(7 + 1);
+        System.out.println(column);
+        doTurn(column);
+    }
+
 
     /**
      * Fills the board with <code>' '</code> character literals.
