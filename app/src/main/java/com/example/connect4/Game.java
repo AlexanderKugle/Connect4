@@ -4,8 +4,9 @@ import java.util.Arrays;
 
 public class Game
 {
-
-    private char[][] board = new char[7][6]; //indexing in by column then by row
+    private final byte MAX_COL = 7;
+    private final byte MAX_ROW = 6;
+    private char[][] board = new char[MAX_COL][MAX_ROW]; //indexing in by column then by row
     private String[] playerNames;
     private char[] playerTokens = new char[] {'R', 'Y'};
     private boolean isAiGame;
@@ -51,7 +52,7 @@ public class Game
             board[colNum][rowNum] = playerTokens[turn];
 
             //check for win
-            isGameOver = checkForWin(0,0,0,0); //PLACEHOLDER
+            isGameOver = checkForWin(4, 0,0,0,0); //PLACEHOLDER
 
             //If the game isn't won, check for a tie
             if(!isGameOver){
@@ -116,10 +117,6 @@ public class Game
         return rowNum;
     }
 
-    private boolean checkForWin(int xStart, int yStart, int xDir, int yDir){
-        return false;
-    }
-
     /**
      * Checks the top row of the board to see if it is full.
      * The only time it should be entirely full is when there is no more valid spaces to play
@@ -155,5 +152,48 @@ public class Game
 
     public String[] getPlayerNames(){
         return playerNames;
+    }
+    
+    /**
+     * Given a start position, direction,and steps to go in the direction will check for a win in that direction.
+     * @param steps
+     * @param xStart
+     * @param yStart
+     * @param xDir
+     * @param yDir
+     * @return
+     */
+    public boolean checkForWin(int steps, int xStart, int yStart, int xDir, int yDir)
+    {
+        // Will continue to check for pieces if there are pieces required for a win
+        if (steps > 0)
+        {
+            // Making sure next piece checked is not outside the board
+            if (((xStart+xDir) < MAX_COL && (xStart+xDir) > 0) && ((yStart+yDir) < MAX_ROW && (yStart+yDir) > 0))
+            {
+                // Get player color that is needed to checked
+                char checkColor = board[xStart][yStart];
+                // Get next color in sequence from the board;
+                char pieceColor = board[xStart + xDir][yStart + yDir];
+                // If next piece is the same as current then continue going else there is not a win in this direction
+                if (pieceColor == checkColor)
+                {
+                    checkForWin(steps-1,xStart+xDir,yStart+yDir,xDir,yDir);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
+        return false;
     }
 }
