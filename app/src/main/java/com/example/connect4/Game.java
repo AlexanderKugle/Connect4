@@ -38,21 +38,35 @@ public class Game
         //2 = A player won | 3 = The game is a tie
         int turnCode = 0;
         try{
-            boolean isGameOver;
+            boolean isGameOver = false;
             boolean isATie = false;
 
-            //get the row num
-            int rowNum = getNextRowNum(colNum);
-            if(rowNum == -1){
-                turnCode = 1;
-                return turnCode;
-            }
-
-            //place the token
-            board[colNum][rowNum] = playerTokens[turn];
+            //place token
+            turnCode = doTokenPlacement(colNum);
 
             //check for win
-            isGameOver = checkForWin(4, 0,0,0,0); //PLACEHOLDER
+
+            for(int colIter = 0; colIter < board.length; colIter++){
+                for(int rowIter = 0; rowIter < board[colIter].length; rowIter++){
+                    isGameOver = checkForWin(4, colIter, rowIter, 1, 0);
+                    if(!isGameOver){
+                        isGameOver = checkForWin(4, colIter, rowIter, 0, 1);
+                        if(!isGameOver){
+                            isGameOver = checkForWin(4, colIter, rowIter, 1, 1);
+                            if(!isGameOver){
+                                isGameOver = checkForWin(4, colIter, rowIter, -1, 0);
+                                if(!isGameOver){
+                                    isGameOver = checkForWin(4, colIter, rowIter, 0, -1);
+                                    if(!isGameOver){
+                                        isGameOver = checkForWin(4, colIter, rowIter, -1, -1);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
 
             //If the game isn't won, check for a tie
             if(!isGameOver){
@@ -81,7 +95,7 @@ public class Game
     }
 
     /**
-     *
+     * Increments the turn counter (since it wasn't incremented at the end of the game) and clears the board
      */
     public void resetGame(){
         turn = (turn + 1) % 2;
@@ -96,6 +110,26 @@ public class Game
         for(int colIter = 0; colIter < board.length; colIter++){
             Arrays.fill(board[colIter], ' ');
         }
+    }
+
+    /**
+     * Places a token in the board on the lowest row of a given column
+     * @param colNum number of column ot place the token
+     * @return Code representing the success / failure of the placement (0 = Success, 1 = Failure)
+     */
+    public int doTokenPlacement(int colNum){
+        int placeCode = 0;
+        //get the row num
+        int rowNum = getNextRowNum(colNum);
+        if(rowNum == -1){
+            placeCode = 1;
+            return placeCode;
+        }
+
+        //place the token
+        board[colNum][rowNum] = playerTokens[turn];
+
+        return placeCode;
     }
 
     /**
