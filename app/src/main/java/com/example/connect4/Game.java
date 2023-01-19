@@ -4,8 +4,9 @@ import java.util.Arrays;
 
 public class Game
 {
-
-    private char[][] board = new char[7][6]; //indexing in by column then by row
+    private final byte MAX_COL = 7;
+    private final byte MAX_ROW = 6;
+    private char[][] board = new char[MAX_COL][MAX_ROW]; //indexing in by column then by row
     private String[] playerNames;
     private char[] playerTokens = new char[] {'R', 'Y'};
     private boolean isAiGame;
@@ -63,14 +64,22 @@ public class Game
         // Will continue to check for pieces if there are pieces required for a win
         if (steps > 0)
         {
-            // Get player color that is needed to checked
-            String checkColor = board[xStart][yStart];
-            // Get next color in sequence from the board;
-            String pieceColor = board[xStart + xDir][yStart + yDir];
-            // If next piece is the same as current then continue going else there is not a win in this direction
-            if (pieceColor.equalsIgnoreCase(checkColor))
+            // Making sure next piece checked is not outside the board
+            if (((xStart+xDir) < MAX_COL && (xStart+xDir) > 0) && ((yStart+yDir) < MAX_ROW && (yStart+yDir) > 0))
             {
-                checkForWin(steps-1,xStart+xDir,yStart+yDir,xDir,yDir);
+                // Get player color that is needed to checked
+                char checkColor = board[xStart][yStart];
+                // Get next color in sequence from the board;
+                char pieceColor = board[xStart + xDir][yStart + yDir];
+                // If next piece is the same as current then continue going else there is not a win in this direction
+                if (pieceColor == checkColor)
+                {
+                    checkForWin(steps-1,xStart+xDir,yStart+yDir,xDir,yDir);
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
