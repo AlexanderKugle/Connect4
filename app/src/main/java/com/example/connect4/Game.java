@@ -106,7 +106,7 @@ public class Game
     public void aiTurn() {
         int column = new Random().nextInt(7 + 1);
         System.out.println(column);
-        doTurn(column);
+        doTokenPlacement(column);
     }
 
 
@@ -115,7 +115,7 @@ public class Game
      * Used to initialize the board and clear the board on a restart
      */
     private void clearBoard(){
-        for(int colIter = 0; colIter < board.length; colIter++){
+        for(int colIter = 0; colIter < MAX_COL; colIter++){
             Arrays.fill(board[colIter], ' ');
         }
     }
@@ -150,7 +150,7 @@ public class Game
     private int getNextRowNum(int colNum){
         int rowNum = -1;
         //iterate through the column provided to find the first empty row from the bottom
-        for(int rowIter = board[colNum].length; rowIter > -1; rowIter--){
+        for(int rowIter = MAX_ROW; rowIter > -1; rowIter--){
             if(board[colNum][rowIter] == ' '){
                 rowNum = rowIter;
                 break;
