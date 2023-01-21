@@ -23,7 +23,7 @@ public class Game
     }
 
     public void aiTurn() {
-        int column = new Random().nextInt(7 + 1);
+        int column = new Random().nextInt(MAX_COL + 1);
         System.out.println(column);
         doTurn(column);
     }
