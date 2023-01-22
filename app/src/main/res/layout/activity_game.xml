@@ -27,43 +27,43 @@
                 android:id="@+id/ivOneOne"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneTwo"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneThree"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneFour"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneFive"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneSix"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneSeven"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
         </TableRow>
 
@@ -76,43 +76,43 @@
                 android:id="@+id/ivTwoOne"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivTwoTwo"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivTwoThree"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivTwoFour"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivTwoFive"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivTwoSix"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivTwoSeven"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
         </TableRow>
 
         <TableRow
@@ -124,43 +124,43 @@
                 android:id="@+id/ivThreeOne"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivThreeTwo"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivThreeThree"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivThreeFour"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivThreeFive"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivThreeSix"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivThreeSeven"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
         </TableRow>
 
         <TableRow
@@ -172,43 +172,43 @@
                 android:id="@+id/ivFourOne"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFourTwo"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFourThree"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFourFour"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFourFive"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFourSix"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFourSeven"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
         </TableRow>
 
         <TableRow
@@ -220,43 +220,43 @@
                 android:id="@+id/ivFiveOne"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFiveTwo"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFiveThree"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneFour5"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFiveFive"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivOneSix5"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivFiveSeven"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
         </TableRow>
 
         <TableRow
@@ -268,43 +268,43 @@
                 android:id="@+id/ivSixOne"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivSixTwo"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivSixThree"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivSixFour"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivSixFive"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivSixSix"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
                 android:id="@+id/ivSixSeven"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
-                tools:srcCompat="@drawable/EmptyToken" />
+                tools:srcCompat="@drawable/empty_token" />
         </TableRow>
     </TableLayout>
 
