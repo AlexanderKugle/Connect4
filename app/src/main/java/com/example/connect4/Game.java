@@ -104,7 +104,7 @@ public class Game
     }
 
     public void aiTurn() {
-        int column = new Random().nextInt(6 + 1);
+        int column = new Random().nextInt(MAX_COL + 1);
         System.out.println(column);
         doTokenPlacement(column);
     }
@@ -193,15 +193,54 @@ public class Game
     }
     
     /**
+     * checks for every possible win condition from where piece is placed
+     * @param xStart
+     * @param yStart
+     * @return true if win was found false otherwise
+     */
+    public boolean checkForWin(int xStart, int yStart)
+    {
+        return checkForWin(4,xStart,yStart,1,0) || // right horizontal
+                checkForWin(4,xStart,yStart,1,1) || // top right diagonal
+                checkForWin(4,xStart,yStart,0,1) || // strait up vertical
+                checkForWin(4,xStart,yStart,-1,1) || // left up diagonal
+                checkForWin(4,xStart,yStart,-1,0) || // left horizontal
+                checkForWin(4,xStart,yStart,-1,-1) || // left down diagonal
+                checkForWin(4,xStart,yStart,0,-1) || // down vertical
+                checkForWin(4,xStart,yStart,1,-1) || // down right diagonal
+                checkForWinOffset(xStart, yStart);
+
+
+    }
+
+    /**
+     * Will check if piece was placed in the middle to create the win condition
+     * @param xStart
+     * @param yStart
+     * @return tru if win was found false otherwise
+     */
+    private boolean checkForWinOffset(int xStart, int yStart)
+    {
+        return checkForWin(4,xStart - 1,yStart,1,0) || // right horizontal left offset
+                checkForWin(4,xStart - 1,yStart - 1,1,1) || // top right diagonal bottom left offset
+                checkForWin(4,xStart,yStart - 1,0,1) || // strait up vertical down offset
+                checkForWin(4,xStart + 1,yStart - 1,-1,1) || // left up diagonal bottom right offset
+                checkForWin(4,xStart + 1,yStart,-1,0) || // left horizontal right offset
+                checkForWin(4,xStart + 1,yStart + 1,-1,-1) || // left down diagonal top right offset
+                checkForWin(4,xStart,yStart + 1,0,-1) || // down vertical up offset
+                checkForWin(4,xStart - 1,yStart + 1,1,-1); // down right diagonal top left offset
+    }
+
+    /**
      * Given a start position, direction,and steps to go in the direction will check for a win in that direction.
      * @param steps
      * @param xStart
      * @param yStart
      * @param xDir
      * @param yDir
-     * @return
+     * @return True if a win condition has been met false elsewise
      */
-    public boolean checkForWin(int steps, int xStart, int yStart, int xDir, int yDir)
+    private boolean checkForWin(int steps, int xStart, int yStart, int xDir, int yDir)
     {
         // Will continue to check for pieces if there are pieces required for a win
         if (steps > 0)
