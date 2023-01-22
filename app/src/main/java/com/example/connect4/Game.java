@@ -47,8 +47,8 @@ public class Game
 
             //check for win
 
-            for(int colIter = 0; colIter < board.length; colIter++){
-                for(int rowIter = 0; rowIter < board[colIter].length; rowIter++){
+            for(int colIter = 0; colIter < MAX_COL; colIter++){
+                for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
                     isGameOver = checkForWin(4, colIter, rowIter, 1, 0);
                     if(!isGameOver){
                         isGameOver = checkForWin(4, colIter, rowIter, 0, 1);
@@ -79,7 +79,7 @@ public class Game
                 turn = (turn + 1) % 2;
                 //If applicable, do an AI turn and swap the counter back to the Human player
                 if(isAiGame){
-                    doAiTurn();
+                    aiTurn();
                     turn = (turn + 1) % 2;
                 }
             } else {
@@ -104,7 +104,7 @@ public class Game
     }
 
     public void aiTurn() {
-        int column = new Random().nextInt(7 + 1);
+        int column = new Random().nextInt(6 + 1);
         System.out.println(column);
         doTokenPlacement(column);
     }
@@ -150,7 +150,7 @@ public class Game
     private int getNextRowNum(int colNum){
         int rowNum = -1;
         //iterate through the column provided to find the first empty row from the bottom
-        for(int rowIter = MAX_ROW; rowIter > -1; rowIter--){
+        for(int rowIter = MAX_ROW - 1; rowIter > -1; rowIter--){
             if(board[colNum][rowIter] == ' '){
                 rowNum = rowIter;
                 break;
@@ -176,10 +176,6 @@ public class Game
         }
 
         return isATie;
-    }
-
-    public void doAiTurn(){
-
     }
 
     //These getters should be used by the view to update the GUI board and have the player names available to the view
