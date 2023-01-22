@@ -49,23 +49,22 @@ public class Game
 
             for(int colIter = 0; colIter < MAX_COL; colIter++){
                 for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
-                    isGameOver = checkForWin(4, colIter, rowIter, 1, 0);
-                    if(!isGameOver){
-                        isGameOver = checkForWin(4, colIter, rowIter, 0, 1);
-                        if(!isGameOver){
-                            isGameOver = checkForWin(4, colIter, rowIter, 1, 1);
-                            if(!isGameOver){
-                                isGameOver = checkForWin(4, colIter, rowIter, -1, 0);
-                                if(!isGameOver){
-                                    isGameOver = checkForWin(4, colIter, rowIter, 0, -1);
-                                    if(!isGameOver){
-                                        isGameOver = checkForWin(4, colIter, rowIter, -1, -1);
-                                    }
-                                }
-                            }
-                        }
-
-                    }
+                    isGameOver = checkForWin(colIter, rowIter);
+//                    if(!isGameOver){
+//                        isGameOver = checkForWin(4, colIter, rowIter, 0, 1);
+//                        if(!isGameOver){
+//                            isGameOver = checkForWin(4, colIter, rowIter, 1, 1);
+//                            if(!isGameOver){
+//                                isGameOver = checkForWin(4, colIter, rowIter, -1, 0);
+//                                if(!isGameOver){
+//                                    isGameOver = checkForWin(4, colIter, rowIter, 0, -1);
+//                                    if(!isGameOver){
+//                                        isGameOver = checkForWin(4, colIter, rowIter, -1, -1);
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
                 }
             }
 
