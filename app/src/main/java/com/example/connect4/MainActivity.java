@@ -10,7 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText etP1Name, etP2Name;
+    public EditText etP1Name, etP2Name;
+    public boolean aiBool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStartGame(View v){
         try{
             boolean isAiGame = ((Button)findViewById(v.getId())).getText().toString().contains("AI");
+            aiBool = isAiGame;
 
             String player1Name = etP1Name.getText().toString();
             String player2Name = etP2Name.getText().toString();
