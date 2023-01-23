@@ -420,56 +420,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TableLayout
-        android:id="@+id/tblWinBox"
-        android:layout_width="109dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="-200dp"
-        android:layout_marginEnd="-625dp"
-        android:background="#03A9F4"
-        android:backgroundTint="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:paddingHorizontal="15dp">
-
-            <TextView
-                android:id="@+id/lblWinsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Wins" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/lblP1Wins"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Player One: 0" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/lblP2Wins"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Player Two: 0" />
-
-        </TableRow>
-
-    </TableLayout>
-
     <TextView
         android:id="@+id/lblTurn"
         android:layout_width="wrap_content"
@@ -509,5 +459,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.748" />
+
+    <TableLayout
+        android:id="@+id/tblWinBox"
+        android:layout_width="109dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="-200dp"
+        android:layout_marginEnd="-625dp"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.656">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="15dp">
+
+            <TextView
+                android:id="@+id/lblWinsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Wins" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lblP1Wins"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Player One: 0" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lblP2Wins"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Player Two: 0" />
+
+        </TableRow>
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

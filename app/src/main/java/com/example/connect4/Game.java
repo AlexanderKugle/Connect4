@@ -47,7 +47,7 @@ public class Game
 
             //check for win
 
-            isGameOver = checkForWin(colNum, getNextRowNum(colNum) - 1);
+            isGameOver = checkForWin(colNum, getNextRowNum(colNum) + 1);
 
             //If the game isn't won, check for a tie
             if(!isGameOver){
@@ -195,14 +195,14 @@ public class Game
      */
     public boolean checkForWin(int xStart, int yStart)
     {
-        return checkForWin(4,xStart,yStart,1,0) || // right horizontal
-                checkForWin(4,xStart,yStart,1,1) || // top right diagonal
-                checkForWin(4,xStart,yStart,0,1) || // strait up vertical
-                checkForWin(4,xStart,yStart,-1,1) || // left up diagonal
-                checkForWin(4,xStart,yStart,-1,0) || // left horizontal
-                checkForWin(4,xStart,yStart,-1,-1) || // left down diagonal
-                checkForWin(4,xStart,yStart,0,-1) || // down vertical
-                checkForWin(4,xStart,yStart,1,-1) || // down right diagonal
+        return checkForWin(3,xStart,yStart,1,0) || // right horizontal
+                checkForWin(3,xStart,yStart,1,1) || // top right diagonal
+                checkForWin(3, xStart,yStart,0,1) || // strait up vertical
+                checkForWin(3, xStart,yStart,-1,1) || // left up diagonal
+                checkForWin(3,xStart,yStart,-1,0) || // left horizontal
+                checkForWin(3,xStart,yStart,-1,-1) || // left down diagonal
+                checkForWin(3,xStart,yStart,0,-1) || // down vertical
+                checkForWin(3,xStart,yStart,1,-1) || // down right diagonal
                 checkForWinOffset(xStart, yStart);
 
 
@@ -216,14 +216,14 @@ public class Game
      */
     private boolean checkForWinOffset(int xStart, int yStart)
     {
-        return checkForWin(4,xStart - 1,yStart,1,0) || // right horizontal left offset
-                checkForWin(4,xStart - 1,yStart - 1,1,1) || // top right diagonal bottom left offset
-                checkForWin(4,xStart,yStart - 1,0,1) || // strait up vertical down offset
-                checkForWin(4,xStart + 1,yStart - 1,-1,1) || // left up diagonal bottom right offset
-                checkForWin(4,xStart + 1,yStart,-1,0) || // left horizontal right offset
-                checkForWin(4,xStart + 1,yStart + 1,-1,-1) || // left down diagonal top right offset
-                checkForWin(4,xStart,yStart + 1,0,-1) || // down vertical up offset
-                checkForWin(4,xStart - 1,yStart + 1,1,-1); // down right diagonal top left offset
+        return checkForWin(3,xStart - 1,yStart,1,0) || // right horizontal left offset
+                checkForWin(3,xStart - 1,yStart - 1,1,1) || // top right diagonal bottom left offset
+                checkForWin(3,xStart,yStart - 1,0,1) || // strait up vertical down offset
+                checkForWin(3,xStart + 1,yStart - 1,-1,1) || // left up diagonal bottom right offset
+                checkForWin(3,xStart + 1,yStart,-1,0) || // left horizontal right offset
+                checkForWin(3,xStart + 1,yStart + 1,-1,-1) || // left down diagonal top right offset
+                checkForWin(3,xStart,yStart + 1,0,-1) || // down vertical up offset
+                checkForWin(3,xStart - 1,yStart + 1,1,-1); // down right diagonal top left offset
     }
 
     /**
@@ -241,16 +241,23 @@ public class Game
         if (steps > 0)
         {
             // Making sure next piece checked is not outside the board
-            if (((xStart+xDir) < MAX_COL && (xStart+xDir) > 0) && ((yStart+yDir) < MAX_ROW && (yStart+yDir) > 0))
+
+            if (((xStart+xDir) < MAX_COL && (xStart+xDir) >= 0) && ((yStart+yDir) < MAX_ROW && (yStart+yDir) >= 0) && (yStart < MAX_ROW && yStart >= 0) && (xStart < MAX_COL && xStart >= 0) )
             {
                 // Get player color that is needed to checked
+
+//                char checkColor = board[yStart - 1][xStart - 1];
+//                // Get next color in sequence from the board;
+//                char pieceColor = board[yStart + yDir - 1][xStart + xDir - 1];
+
                 char checkColor = board[yStart][xStart];
                 // Get next color in sequence from the board;
                 char pieceColor = board[yStart + yDir][xStart + xDir];
+
                 // If next piece is the same as current then continue going else there is not a win in this direction
                 if (pieceColor == checkColor)
                 {
-                    checkForWin(steps-1,xStart+xDir,yStart+yDir,xDir,yDir);
+                    return checkForWin(steps-1,xStart+xDir,yStart+yDir,xDir,yDir);
                 }
                 else
                 {
@@ -266,6 +273,5 @@ public class Game
         {
             return true;
         }
-        return false;
     }
 }

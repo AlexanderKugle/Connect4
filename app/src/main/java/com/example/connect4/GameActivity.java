@@ -162,13 +162,13 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case 2:
                 lblTurn.setText(currentPlayer + " Wins!");
-                if (lblP1.getText().equals(currentPlayer))
+                if (lblP1Wins.getText().toString().contains(currentPlayer))
                 {
-                    lblP1.setText("" + (Integer.parseInt(lblP1.getText().toString()) + 1));
+                    lblP1Wins.setText(currentPlayer + ": " + (Integer.parseInt(lblP1Wins.getText().toString().split(": ")[1]) + 1));
                 }
                 else
                 {
-                    lblP2.setText("" + (Integer.parseInt(lblP2.getText().toString()) + 1));
+                    lblP2wins.setText(currentPlayer + ": " + (Integer.parseInt(lblP2wins.getText().toString().split(": ")[1]) + 1));
                 }
                 toggleButtons(false,false,false,false,false,false,false,true,true);
                 break;
