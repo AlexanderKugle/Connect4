@@ -112,6 +112,8 @@ public class GameActivity extends AppCompatActivity {
         lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
 
         toggleButtons(true,true,true,true,true,true,true,false,false);
+
+        updateBoard();
     }
 
     public void updateBoard()

@@ -248,9 +248,9 @@ public class Game
             if (((xStart+xDir) < MAX_COL && (xStart+xDir) > 0) && ((yStart+yDir) < MAX_ROW && (yStart+yDir) > 0))
             {
                 // Get player color that is needed to checked
-                char checkColor = board[xStart][yStart];
+                char checkColor = board[yStart - 1][xStart - 1];
                 // Get next color in sequence from the board;
-                char pieceColor = board[xStart + xDir][yStart + yDir];
+                char pieceColor = board[yStart + yDir - 1][xStart + xDir - 1];
                 // If next piece is the same as current then continue going else there is not a win in this direction
                 if (pieceColor == checkColor)
                 {
