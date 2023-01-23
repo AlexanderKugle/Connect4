@@ -11,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /*
-•	Swap text according to current player turn (15 minutes)
-•	Check if game is over (45 minutes)
 o	If it is, disable btncol1Place through btnCol7Place and enable/make visible btnReset and btnMenu. Also, set the text to “{PlayerName} has won!” and increment the score in the win box for the appropriate player
 o	If it isn’t, continue as normal
 
@@ -158,6 +156,14 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case 2:
                 lblTurn.setText(currentPlayer + " Wins!");
+                if (lblP1.getText().equals(currentPlayer))
+                {
+                    lblP1.setText("" + (Integer.parseInt(lblP1.getText().toString()) + 1));
+                }
+                else
+                {
+                    lblP2.setText("" + (Integer.parseInt(lblP2.getText().toString()) + 1));
+                }
                 break;
             case 3:
                 lblTurn.setText("It was a tie");
