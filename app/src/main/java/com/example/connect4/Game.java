@@ -12,20 +12,100 @@ public class Game
     private char[] playerTokens = new char[] {'R', 'Y'};
     private boolean isAiGame;
 
+    private int turn;
+
     public Game(String[] playerNames, boolean isAiGame){
         this.playerNames = playerNames;
         this.isAiGame = isAiGame;
+        turn = (int)(Math.random() * 2);
         clearBoard();
     }
 
-    public void doTurn(int colNum){
+    /**
+     * Main gameplay loop. Takes in the user input, finds the row number from that,
+     * places the token, checks for tie and win, and does the AI turn if necessary
+     * @param colNum 0-based number the user chose in the UI
+     * @return Integer representing the result of the turn.
+     * <br />
+     *     0 = Turn succeeded, Game continues<br/>
+     *     1 = Turn failed<br/>
+     *     2 = Game Over. A player won.<br/>
+     *     3 = Game Over. The game was a tie.
+     * <br />
+     * Codes 2 and 3 do not change the turn counter
+     */
+    public int doTurn(int colNum){
+        //0 = success, continue as normal | 1 = failed, some error occurred or bad input was provided |
+        //2 = A player won | 3 = The game is a tie
+        int turnCode = 0;
+        try{
+            boolean isGameOver = false;
+            boolean isATie = false;
 
+            //place token
+            turnCode = doTokenPlacement(colNum);
+
+            //check for win
+
+            for(int colIter = 0; colIter < MAX_COL; colIter++){
+                for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
+                    isGameOver = checkForWin(colIter, rowIter);
+//                    if(!isGameOver){
+//                        isGameOver = checkForWin(4, colIter, rowIter, 0, 1);
+//                        if(!isGameOver){
+//                            isGameOver = checkForWin(4, colIter, rowIter, 1, 1);
+//                            if(!isGameOver){
+//                                isGameOver = checkForWin(4, colIter, rowIter, -1, 0);
+//                                if(!isGameOver){
+//                                    isGameOver = checkForWin(4, colIter, rowIter, 0, -1);
+//                                    if(!isGameOver){
+//                                        isGameOver = checkForWin(4, colIter, rowIter, -1, -1);
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+                }
+            }
+
+            //If the game isn't won, check for a tie
+            if(!isGameOver){
+                isATie = checkForTie();
+            }
+
+            //If the game hasn't met an end condition, switch turns.
+            if(!isGameOver && !isATie){
+                turn = (turn + 1) % 2;
+                //If applicable, do an AI turn and swap the counter back to the Human player
+                if(isAiGame){
+                    aiTurn();
+                    turn = (turn + 1) % 2;
+                }
+            } else {
+                //if the game has met an end condition, set the turnCode to the appropriate value (as defined above)
+                turnCode = isATie ? 3 : 2;
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            turnCode = 1;
+        }
+
+
+        return turnCode;
+    }
+
+    /**
+     * Increments the turn counter (since it wasn't incremented at the end of the game) and clears the board
+     */
+    public void resetGame(){
+        turn = (turn + 1) % 2;
+        clearBoard();
     }
 
     public void aiTurn() {
         int column = new Random().nextInt(MAX_COL + 1);
         System.out.println(column);
-        doTurn(column);
+        doTokenPlacement(column);
     }
 
 
@@ -34,9 +114,29 @@ public class Game
      * Used to initialize the board and clear the board on a restart
      */
     private void clearBoard(){
-        for(int colIter = 0; colIter < board.length; colIter++){
+        for(int colIter = 0; colIter < MAX_COL; colIter++){
             Arrays.fill(board[colIter], ' ');
         }
+    }
+
+    /**
+     * Places a token in the board on the lowest row of a given column
+     * @param colNum number of column ot place the token
+     * @return Code representing the success / failure of the placement (0 = Success, 1 = Failure)
+     */
+    public int doTokenPlacement(int colNum){
+        int placeCode = 0;
+        //get the row num
+        int rowNum = getNextRowNum(colNum);
+        if(rowNum == -1){
+            placeCode = 1;
+            return placeCode;
+        }
+
+        //place the token
+        board[colNum][rowNum] = playerTokens[turn];
+
+        return placeCode;
     }
 
     /**
@@ -48,8 +148,8 @@ public class Game
      */
     private int getNextRowNum(int colNum){
         int rowNum = -1;
-
-        for(int rowIter = board[colNum].length; rowIter > -1; rowIter--){
+        //iterate through the column provided to find the first empty row from the bottom
+        for(int rowIter = MAX_ROW - 1; rowIter > -1; rowIter--){
             if(board[colNum][rowIter] == ' '){
                 rowNum = rowIter;
                 break;
@@ -58,6 +158,39 @@ public class Game
         return rowNum;
     }
 
+    /**
+     * Checks the top row of the board to see if it is full.
+     * The only time it should be entirely full is when there is no more valid spaces to play
+     * @return Boolean representing whether or no the top row is completely full, thus meaning the game is eligible for a tie
+     */
+    private boolean checkForTie(){
+        boolean isATie = true;
+        //iterates through the top row of the board
+        for (char[] chars : board) {
+            //if it finds an empty space, change the flag value (isATie) to false
+            if (chars[0] == ' ') {
+                isATie = false;
+                break;
+            }
+        }
+
+        return isATie;
+    }
+
+    //These getters should be used by the view to update the GUI board and have the player names available to the view
+
+    public char[][] getBoard() {
+        return board;
+    }
+
+    public String getCurrentPlayer(){
+        return playerNames[turn];
+    }
+
+    public String[] getPlayerNames(){
+        return playerNames;
+    }
+    
     /**
      * checks for every possible win condition from where piece is placed
      * @param xStart
