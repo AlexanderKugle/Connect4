@@ -7,7 +7,7 @@ public class Game
 {
     private final byte MAX_COL = 7;
     private final byte MAX_ROW = 6;
-    private char[][] board = new char[MAX_COL][MAX_ROW]; //indexing in by column then by row
+    private char[][] board = new char[MAX_ROW][MAX_COL]; //indexing in by row then by col
     private String[] playerNames;
     private char[] playerTokens = new char[] {'R', 'Y'};
     private boolean isAiGame;

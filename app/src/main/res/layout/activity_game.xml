@@ -235,7 +235,7 @@
                 tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
-                android:id="@+id/ivOneFour5"
+                android:id="@+id/ivFiveFour"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
                 tools:srcCompat="@drawable/empty_token" />
@@ -247,7 +247,7 @@
                 tools:srcCompat="@drawable/empty_token" />
 
             <ImageView
-                android:id="@+id/ivOneSix5"
+                android:id="@+id/ivFiveSix"
                 android:layout_width="74dp"
                 android:layout_height="57dp"
                 tools:srcCompat="@drawable/empty_token" />
@@ -488,7 +488,7 @@
         app:layout_constraintVertical_bias="0.432" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/btnMainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Main&#10;Menu"
