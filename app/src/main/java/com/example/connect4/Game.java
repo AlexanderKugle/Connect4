@@ -17,7 +17,7 @@ public class Game
     public Game(String[] playerNames, boolean isAiGame){
         this.playerNames = playerNames;
         this.isAiGame = isAiGame;
-        turn = (int)(Math.random() * 2);
+        turn = isAiGame ? 0 : (int)(Math.random() * 2);
         clearBoard();
     }
 
@@ -59,8 +59,10 @@ public class Game
                 turn = (turn + 1) % 2;
                 //If applicable, do an AI turn and swap the counter back to the Human player
                 if(isAiGame){
-                    aiTurn();
-                    turn = (turn + 1) % 2;
+                    turnCode = aiTurn();
+                    if(turnCode == 0) {
+                        turn = (turn + 1) % 2;
+                    }
                 }
             } else {
                 //if the game has met an end condition, set the turnCode to the appropriate value (as defined above)
@@ -79,18 +81,24 @@ public class Game
      * Increments the turn counter (since it wasn't incremented at the end of the game) and clears the board
      */
     public void resetGame(){
-        turn = (turn + 1) % 2;
+        turn =isAiGame ? 0 :  (turn + 1) % 2;
         clearBoard();
     }
 
-    public void aiTurn() {
-        int successCode = -1;
-        while(successCode != 0){
+    public int aiTurn() {
+        int successCode = 1;
+        while(successCode == 1){
             int column = new Random().nextInt(MAX_COL);
             System.out.println(column);
             successCode = doTokenPlacement(column);
+            if(successCode == 0){
+                successCode = checkForWin(column, getNextRowNum(column) + 1) ? 2 : 0;
+                if(successCode != 2){
+                    successCode = checkForTie() ? 3 : 0;
+                }
+            }
         }
-
+        return successCode;
     }
 
 

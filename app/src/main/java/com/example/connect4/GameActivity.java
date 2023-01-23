@@ -150,15 +150,18 @@ public class GameActivity extends AppCompatActivity {
 
     public void placePiece(int colNum)
     {
-        String currentPlayer = game.getCurrentPlayer();
+
         int turnCode = game.doTurn(colNum);
+        String currentPlayer = game.getCurrentPlayer();
         updateBoard();
         switch(turnCode)
         {
             case 0:
                 lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
+                setColumnVisibility(colNum + 1,game.checkColumnAvailability(colNum));
                 break;
             case 1:
+                setColumnVisibility(colNum + 1,game.checkColumnAvailability(colNum));
                 break;
             case 2:
                 lblTurn.setText(currentPlayer + " Wins!");
@@ -178,7 +181,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
 
-        setColumnVisibility(colNum + 1,game.checkColumnAvailability(colNum));
+
     }
 
     public void setColumnVisibility(int colNum, boolean isVisible)
