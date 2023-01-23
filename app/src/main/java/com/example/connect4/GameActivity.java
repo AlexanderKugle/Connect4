@@ -10,11 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/*
-o	If it is, disable btncol1Place through btnCol7Place and enable/make visible btnReset and btnMenu. Also, set the text to “{PlayerName} has won!” and increment the score in the win box for the appropriate player
-o	If it isn’t, continue as normal
-
- */
 
 public class GameActivity extends AppCompatActivity {
 
@@ -164,9 +159,68 @@ public class GameActivity extends AppCompatActivity {
                 {
                     lblP2.setText("" + (Integer.parseInt(lblP2.getText().toString()) + 1));
                 }
+                toggleButtons(false,false,false,false,false,false,false,true,true);
                 break;
             case 3:
                 lblTurn.setText("It was a tie");
+                break;
+        }
+
+        setColumnVisibility(colNum,game.checkColumnAvailability(colNum));
+    }
+
+    public void setColumnVisibility(int colNum, boolean isVisible)
+    {
+        switch (colNum)
+        {
+            case 1:
+                if (isVisible) {
+                    btnCol1Place.setVisibility(View.VISIBLE);
+                } else {
+                    btnCol1Place.setVisibility(View.INVISIBLE);
+                }
+                break;
+            case 2:
+                if (isVisible) {
+                    btnCol2Place.setVisibility(View.VISIBLE);
+                } else {
+                    btnCol2Place.setVisibility(View.INVISIBLE);
+                }
+                break;
+            case 3:
+                if (isVisible) {
+                    btnCol3Place.setVisibility(View.VISIBLE);
+                } else {
+                    btnCol3Place.setVisibility(View.INVISIBLE);
+                }
+                break;
+            case 4:
+                if (isVisible) {
+                    btnCol4Place.setVisibility(View.VISIBLE);
+                } else {
+                    btnCol4Place.setVisibility(View.INVISIBLE);
+                }
+                break;
+            case 5:
+                if (isVisible) {
+                    btnCol5Place.setVisibility(View.VISIBLE);
+                } else {
+                    btnCol5Place.setVisibility(View.INVISIBLE);
+                }
+                break;
+            case 6:
+                if (isVisible) {
+                    btnCol6Place.setVisibility(View.VISIBLE);
+                } else {
+                    btnCol6Place.setVisibility(View.INVISIBLE);
+                }
+                break;
+            case 7:
+                if (isVisible) {
+                    btnCol7Place.setVisibility(View.VISIBLE);
+                } else {
+                    btnCol7Place.setVisibility(View.INVISIBLE);
+                }
                 break;
         }
     }
@@ -209,47 +263,13 @@ public class GameActivity extends AppCompatActivity {
 
     public void toggleButtons(boolean col1Btn, boolean col2Btn, boolean col3Btn, boolean col4Btn, boolean col5Btn, boolean col6Btn, boolean col7Btn, boolean reset, boolean home)
     {
-        if (col1Btn) {
-            btnCol1Place.setVisibility(View.VISIBLE);
-        } else {
-            btnCol1Place.setVisibility(View.GONE);
-        }
-
-        if (col2Btn) {
-            btnCol2Place.setVisibility(View.VISIBLE);
-        } else {
-            btnCol2Place.setVisibility(View.GONE);
-        }
-
-        if (col3Btn) {
-            btnCol4Place.setVisibility(View.VISIBLE);
-        } else {
-            btnCol4Place.setVisibility(View.GONE);
-        }
-
-        if (col4Btn) {
-            btnCol4Place.setVisibility(View.VISIBLE);
-        } else {
-            btnCol4Place.setVisibility(View.GONE);
-        }
-
-        if (col5Btn) {
-            btnCol5Place.setVisibility(View.VISIBLE);
-        } else {
-            btnCol5Place.setVisibility(View.GONE);
-        }
-
-        if (col6Btn) {
-            btnCol6Place.setVisibility(View.VISIBLE);
-        } else {
-            btnCol6Place.setVisibility(View.GONE);
-        }
-
-        if (col7Btn) {
-            btnCol7Place.setVisibility(View.VISIBLE);
-        } else {
-            btnCol7Place.setVisibility(View.GONE);
-        }
+        setColumnVisibility(1, col1Btn);
+        setColumnVisibility(2, col2Btn);
+        setColumnVisibility(3, col3Btn);
+        setColumnVisibility(4, col4Btn);
+        setColumnVisibility(5, col5Btn);
+        setColumnVisibility(6, col6Btn);
+        setColumnVisibility(7, col7Btn);
 
         if (home) {
             btnMainMenu.setVisibility(View.VISIBLE);
@@ -269,5 +289,6 @@ public class GameActivity extends AppCompatActivity {
     {
         game.resetGame();
         updateBoard();
+        toggleButtons(true,true,true,true,true,true,true,false,false);
     }
 }

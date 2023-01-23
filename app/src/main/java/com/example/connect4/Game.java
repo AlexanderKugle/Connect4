@@ -143,6 +143,17 @@ public class Game
         return rowNum;
     }
 
+    public boolean checkColumnAvailability(int colNum)
+    {
+        for (int i = 0; i < MAX_ROW; i++) {
+            if (board[i][colNum] == ' ') {
+                return true;
+            }
+        }
+                return false;
+    }
+
+
     /**
      * Checks the top row of the board to see if it is full.
      * The only time it should be entirely full is when there is no more valid spaces to play
