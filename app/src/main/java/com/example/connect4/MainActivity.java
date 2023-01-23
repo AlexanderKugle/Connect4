@@ -32,12 +32,13 @@ public class MainActivity extends AppCompatActivity {
             player1Name = player1Name.isEmpty() ? "Player 1" : player1Name;
             player2Name = player2Name.isEmpty() ? "Player 2" : player2Name;
 
-            Intent game = new Intent(this, GamePage.class);
+            Intent game = new Intent(this, GameActivity.class);
             game.putExtra("isAiGame", isAiGame);
             game.putExtra("playerNames", new String[] {player1Name, player2Name});
             startActivity(game);
             recreate();
         } catch (Exception ex){
+            ex.printStackTrace();
             Toast.makeText(this, "Something went wrong when trying to start the game. Sorry!", Toast.LENGTH_SHORT).show();
         }
 

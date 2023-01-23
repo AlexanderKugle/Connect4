@@ -47,8 +47,8 @@ public class Game
 
             //check for win
 
-            for(int colIter = 0; colIter < MAX_COL; colIter++){
-                for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
+            for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
+                for(int colIter = 0; colIter < MAX_COL; colIter++){
                     isGameOver = checkForWin(colIter, rowIter);
                 }
             }
@@ -88,9 +88,13 @@ public class Game
     }
 
     public void aiTurn() {
-        int column = new Random().nextInt(MAX_COL + 1);
-        System.out.println(column);
-        doTokenPlacement(column);
+        int successCode = -1;
+        while(successCode != 0){
+            int column = new Random().nextInt(MAX_COL + 1);
+            System.out.println(column);
+            successCode = doTokenPlacement(column);
+        }
+
     }
 
 
@@ -99,8 +103,8 @@ public class Game
      * Used to initialize the board and clear the board on a restart
      */
     private void clearBoard(){
-        for(int colIter = 0; colIter < MAX_COL; colIter++){
-            Arrays.fill(board[colIter], ' ');
+        for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
+            Arrays.fill(board[rowIter], ' ');
         }
     }
 
@@ -119,7 +123,7 @@ public class Game
         }
 
         //place the token
-        board[colNum][rowNum] = playerTokens[turn];
+        board[rowNum][colNum] = playerTokens[turn];
 
         return placeCode;
     }
@@ -135,7 +139,7 @@ public class Game
         int rowNum = -1;
         //iterate through the column provided to find the first empty row from the bottom
         for(int rowIter = MAX_ROW - 1; rowIter > -1; rowIter--){
-            if(board[colNum][rowIter] == ' '){
+            if(board[rowIter][colNum] == ' '){
                 rowNum = rowIter;
                 break;
             }

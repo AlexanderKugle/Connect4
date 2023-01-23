@@ -105,10 +105,10 @@ public class GameActivity extends AppCompatActivity {
                 {ivFiveOne, ivFiveTwo, ivFiveThree, ivFiveFour, ivFiveFive, ivFiveSix, ivFiveSeven},
                 {ivSixOne, ivSixTwo, ivSixThree, ivSixFour, ivSixFive, ivSixSix, ivSixSeven}};
 
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         game = new Game(intent.getStringArrayExtra("playerNames"),intent.getBooleanExtra("isAiGame",false));
-        lblP1.setText(game.getPlayerNames()[1]);
-        lblP2.setText(game.getPlayerNames()[2]);
+        lblP1Wins.setText(game.getPlayerNames()[0] + ": 0");
+        lblP2wins.setText(game.getPlayerNames()[1] + ": 0");
         lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
 
         toggleButtons(true,true,true,true,true,true,true,false,false);
