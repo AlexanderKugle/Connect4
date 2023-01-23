@@ -86,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#03A9F4"
+        android:onClick="onStartGame"
         android:text="Start&#10;Human VS AI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -165,10 +165,11 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case 3:
                 lblTurn.setText("It was a tie");
+                toggleButtons(false,false,false,false,false,false,false,true,true);
                 break;
         }
 
-        setColumnVisibility(colNum,game.checkColumnAvailability(colNum));
+        setColumnVisibility(colNum + 1,game.checkColumnAvailability(colNum));
     }
 
     public void setColumnVisibility(int colNum, boolean isVisible)
@@ -233,25 +234,25 @@ public class GameActivity extends AppCompatActivity {
         switch(v.getId())
         {
             case R.id.btnCol1Place:
-                placePiece(1);
+                placePiece(0);
                 break;
             case R.id.btnCol2Place:
-                placePiece(2);
+                placePiece(1);
                 break;
             case R.id.btnCol3Place:
-                placePiece(3);
+                placePiece(2);
                 break;
             case R.id.btnCol4Place:
-                placePiece(4);
+                placePiece(3);
                 break;
             case R.id.btnCol5Place:
-                placePiece(5);
+                placePiece(4);
                 break;
             case R.id.btnCol6Place:
-                placePiece(6);
+                placePiece(5);
                 break;
             case R.id.btnCol7Place:
-                placePiece(7);
+                placePiece(6);
                 break;
             case R.id.btnReset:
                 reset();

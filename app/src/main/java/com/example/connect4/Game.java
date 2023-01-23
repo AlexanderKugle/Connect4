@@ -47,11 +47,7 @@ public class Game
 
             //check for win
 
-            for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
-                for(int colIter = 0; colIter < MAX_COL; colIter++){
-                    isGameOver = checkForWin(colIter, rowIter);
-                }
-            }
+            isGameOver = checkForWin(colNum, getNextRowNum(colNum) - 1);
 
             //If the game isn't won, check for a tie
             if(!isGameOver){
@@ -90,7 +86,7 @@ public class Game
     public void aiTurn() {
         int successCode = -1;
         while(successCode != 0){
-            int column = new Random().nextInt(MAX_COL + 1);
+            int column = new Random().nextInt(MAX_COL);
             System.out.println(column);
             successCode = doTokenPlacement(column);
         }
@@ -166,9 +162,9 @@ public class Game
     private boolean checkForTie(){
         boolean isATie = true;
         //iterates through the top row of the board
-        for (char[] chars : board) {
+        for (int colIter = 0; colIter < MAX_COL; colIter++) {
             //if it finds an empty space, change the flag value (isATie) to false
-            if (chars[0] == ' ') {
+            if (board[0][colIter] == ' ') {
                 isATie = false;
                 break;
             }
@@ -245,7 +241,7 @@ public class Game
         if (steps > 0)
         {
             // Making sure next piece checked is not outside the board
-            if (((xStart+xDir) < MAX_COL && (xStart+xDir) > 0) && ((yStart+yDir) < MAX_ROW && (yStart+yDir) > 0))
+            if (((xStart+xDir) < MAX_COL && (xStart+xDir) >= 0) && ((yStart+yDir) < MAX_ROW && (yStart+yDir) >= 0) && (yStart < MAX_ROW && yStart >= 0) && (xStart < MAX_COL && xStart > 0) )
             {
                 // Get player color that is needed to checked
                 char checkColor = board[yStart - 1][xStart - 1];
