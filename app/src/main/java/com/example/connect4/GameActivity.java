@@ -11,9 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /*
-o	Iterate through, setting the current coordinate to the proper token type (Red, Yellow, or Empty, which would be grey or white)
 •	Swap text according to current player turn (15 minutes)
-o	“It’s Player 1’s turn” <-> “It’s Player 2’s turn”
 •	Check if game is over (45 minutes)
 o	If it is, disable btncol1Place through btnCol7Place and enable/make visible btnReset and btnMenu. Also, set the text to “{PlayerName} has won!” and increment the score in the win box for the appropriate player
 o	If it isn’t, continue as normal
@@ -148,9 +146,23 @@ public class GameActivity extends AppCompatActivity {
 
     public void placePiece(int colNum)
     {
-        game.doTurn(colNum);
+        String currentPlayer = game.getCurrentPlayer();
+        int turnCode = game.doTurn(colNum);
         updateBoard();
-        lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
+        switch(turnCode)
+        {
+            case 0:
+                lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
+                break;
+            case 1:
+                break;
+            case 2:
+                lblTurn.setText(currentPlayer + " Wins!");
+                break;
+            case 3:
+                lblTurn.setText("It was a tie");
+                break;
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
