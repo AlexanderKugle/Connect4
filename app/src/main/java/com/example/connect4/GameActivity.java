@@ -1,5 +1,6 @@
 package com.example.connect4;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -32,6 +33,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_game);
         init();
     }
@@ -109,7 +112,7 @@ public class GameActivity extends AppCompatActivity {
         game = new Game(intent.getStringArrayExtra("playerNames"),intent.getBooleanExtra("isAiGame",false));
         lblP1Wins.setText(game.getPlayerNames()[0] + ": 0");
         lblP2wins.setText(game.getPlayerNames()[1] + ": 0");
-        lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
+        lblTurn.setText("It's " + game.getCurrentPlayer() + "'s\n Turn");
 
         toggleButtons(true,true,true,true,true,true,true,false,false);
 
