@@ -119,7 +119,7 @@ public class GameActivity extends AppCompatActivity {
         char[][] backendBoard = game.getBoard();
         for (int i = 0; i < backendBoard.length; i++)
         {
-            for (int j = 0; j < backendBoard.length; j++)
+            for (int j = 0; j < 7; j++)
             {
                 char color = backendBoard[i][j];
                 switch (color)
