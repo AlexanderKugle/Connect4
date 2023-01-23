@@ -7,7 +7,7 @@ public class Game
 {
     private final byte MAX_COL = 7;
     private final byte MAX_ROW = 6;
-    private char[][] board = new char[MAX_COL][MAX_ROW]; //indexing in by column then by row
+    private char[][] board = new char[MAX_ROW][MAX_COL]; //indexing in by row then by col
     private String[] playerNames;
     private char[] playerTokens = new char[] {'R', 'Y'};
     private boolean isAiGame;
@@ -50,21 +50,6 @@ public class Game
             for(int colIter = 0; colIter < MAX_COL; colIter++){
                 for(int rowIter = 0; rowIter < MAX_ROW; rowIter++){
                     isGameOver = checkForWin(colIter, rowIter);
-//                    if(!isGameOver){
-//                        isGameOver = checkForWin(4, colIter, rowIter, 0, 1);
-//                        if(!isGameOver){
-//                            isGameOver = checkForWin(4, colIter, rowIter, 1, 1);
-//                            if(!isGameOver){
-//                                isGameOver = checkForWin(4, colIter, rowIter, -1, 0);
-//                                if(!isGameOver){
-//                                    isGameOver = checkForWin(4, colIter, rowIter, 0, -1);
-//                                    if(!isGameOver){
-//                                        isGameOver = checkForWin(4, colIter, rowIter, -1, -1);
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
                 }
             }
 
