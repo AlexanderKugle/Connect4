@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +35,9 @@ public class GameActivity extends AppCompatActivity {
             ivOneSix, ivTwoSix, ivThreeSix, ivFourSix, ivFiveSix, ivSixSix,
             ivOneSeven, ivTwoSeven, ivThreeSeven, ivFourSeven, ivFiveSeven, ivSixSeven;
 
+    public Button btnCol1Place, btnCol2Place, btnCol3Place, btnCol4Place,
+            btnCol5Place, btnCol6Place, btnCol7Place, btnMainMenu, btnReset;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,7 @@ public class GameActivity extends AppCompatActivity {
         init();
     }
 
+    @SuppressLint("SetTextI18n")
     public void init()
     {
         lblTurn = findViewById(R.id.lblTurn);
@@ -48,6 +53,16 @@ public class GameActivity extends AppCompatActivity {
         lblP2wins = findViewById(R.id.lblP2Wins);
         lblP1 = findViewById(R.id.lblP1);
         lblP2 = findViewById(R.id.lblP2);
+
+        btnCol1Place = findViewById(R.id.btnCol1Place);
+        btnCol2Place = findViewById(R.id.btnCol2Place);
+        btnCol3Place = findViewById(R.id.btnCol3Place);
+        btnCol4Place = findViewById(R.id.btnCol4Place);
+        btnCol5Place = findViewById(R.id.btnCol5Place);
+        btnCol6Place = findViewById(R.id.btnCol6Place);
+        btnCol7Place = findViewById(R.id.btnCol7Place);
+        btnMainMenu = findViewById(R.id.btnMainMenu);
+        btnReset = findViewById(R.id.btnReset);
 
         ivOneOne = findViewById(R.id.ivOneOne);
         ivTwoOne = findViewById(R.id.ivTwoOne);
@@ -101,6 +116,11 @@ public class GameActivity extends AppCompatActivity {
 
         Intent intent = new Intent();
         game = new Game(intent.getStringArrayExtra("playerNames"),intent.getBooleanExtra("isAiGame",false));
+        lblP1.setText(game.getPlayerNames()[1]);
+        lblP2.setText(game.getPlayerNames()[2]);
+        lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
+
+        toggleButtons(true,true,true,true,true,true,true,false,false);
     }
 
     public void updateBoard()
@@ -130,6 +150,7 @@ public class GameActivity extends AppCompatActivity {
     {
         game.doTurn(colNum);
         updateBoard();
+        lblTurn.setText("It's " + game.getCurrentPlayer() + "'s Turn");
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -167,6 +188,64 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    public void toggleButtons(boolean col1Btn, boolean col2Btn, boolean col3Btn, boolean col4Btn, boolean col5Btn, boolean col6Btn, boolean col7Btn, boolean reset, boolean home)
+    {
+        if (col1Btn) {
+            btnCol1Place.setVisibility(View.VISIBLE);
+        } else {
+            btnCol1Place.setVisibility(View.GONE);
+        }
+
+        if (col2Btn) {
+            btnCol2Place.setVisibility(View.VISIBLE);
+        } else {
+            btnCol2Place.setVisibility(View.GONE);
+        }
+
+        if (col3Btn) {
+            btnCol4Place.setVisibility(View.VISIBLE);
+        } else {
+            btnCol4Place.setVisibility(View.GONE);
+        }
+
+        if (col4Btn) {
+            btnCol4Place.setVisibility(View.VISIBLE);
+        } else {
+            btnCol4Place.setVisibility(View.GONE);
+        }
+
+        if (col5Btn) {
+            btnCol5Place.setVisibility(View.VISIBLE);
+        } else {
+            btnCol5Place.setVisibility(View.GONE);
+        }
+
+        if (col6Btn) {
+            btnCol6Place.setVisibility(View.VISIBLE);
+        } else {
+            btnCol6Place.setVisibility(View.GONE);
+        }
+
+        if (col7Btn) {
+            btnCol7Place.setVisibility(View.VISIBLE);
+        } else {
+            btnCol7Place.setVisibility(View.GONE);
+        }
+
+        if (home) {
+            btnMainMenu.setVisibility(View.VISIBLE);
+        } else {
+            btnMainMenu.setVisibility(View.GONE);
+        }
+
+        if (reset) {
+            btnReset.setVisibility(View.VISIBLE);
+        } else {
+            btnReset.setVisibility(View.GONE);
+        }
+    }
+
 
     public void reset()
     {
