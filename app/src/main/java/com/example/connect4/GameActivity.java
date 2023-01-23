@@ -7,14 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 /*
-	Return to Menu event handler for ID btnMenu (30 minutes)
-	Reset game event handler for ID btnReset (15 minutes)
-	Place Token in Column event handlers for IDs btnCol1Place through btnCol7Place (15 minutes)
-	View refresh (done after every Human turn) (90 minutes)
-•	Update board (30 minutes)
-o	Get board object from Game Back-End
 o	Iterate through, setting the current coordinate to the proper token type (Red, Yellow, or Empty, which would be grey or white)
 •	Swap text according to current player turn (15 minutes)
 o	“It’s Player 1’s turn” <-> “It’s Player 2’s turn”
@@ -28,6 +23,9 @@ public class GameActivity extends AppCompatActivity {
 
     public ImageView[][] board;
 
+    public Game game;
+
+    public TextView lblTurn, lblP1, lblP1Wins, lblP2, lblP2wins;
     public ImageView ivOneOne, ivTwoOne, ivThreeOne, ivFourOne, ivFiveOne, ivSixOne,
             ivOneTwo, ivTwoTwo, ivThreeTwo, ivFourTwo, ivFiveTwo, ivSixTwo,
             ivOneThree, ivTwoThree, ivThreeThree, ivFourThree, ivFiveThree, ivSixThree,
@@ -45,6 +43,12 @@ public class GameActivity extends AppCompatActivity {
 
     public void init()
     {
+        lblTurn = findViewById(R.id.lblTurn);
+        lblP1Wins = findViewById(R.id.lblP1Wins);
+        lblP2wins = findViewById(R.id.lblP2Wins);
+        lblP1 = findViewById(R.id.lblP1);
+        lblP2 = findViewById(R.id.lblP2);
+
         ivOneOne = findViewById(R.id.ivOneOne);
         ivTwoOne = findViewById(R.id.ivTwoOne);
         ivThreeOne = findViewById(R.id.ivThreeOne);
@@ -94,11 +98,38 @@ public class GameActivity extends AppCompatActivity {
                 {ivFourOne, ivFourTwo, ivFourThree, ivFourFour, ivFourFive, ivFourSix, ivFourSeven},
                 {ivFiveOne, ivFiveTwo, ivFiveThree, ivFiveFour, ivFiveFive, ivFiveSix, ivFiveSeven},
                 {ivSixOne, ivSixTwo, ivSixThree, ivSixFour, ivSixFive, ivSixSix, ivSixSeven}};
+
+        Intent intent = new Intent();
+        game = new Game(intent.getStringArrayExtra("playerNames"),intent.getBooleanExtra("isAiGame",false));
+    }
+
+    public void updateBoard()
+    {
+        char[][] backendBoard = game.getBoard();
+        for (int i = 0; i < backendBoard.length; i++)
+        {
+            for (int j = 0; j < backendBoard.length; j++)
+            {
+                char color = backendBoard[i][j];
+                switch (color)
+                {
+                    case 'R':
+                        board[i][j].setImageResource(R.drawable.red_token);
+                        break;
+                    case 'Y':
+                        board[i][j].setImageResource(R.drawable.yellow_token);
+                        break;
+                    default:
+                        board[i][j].setImageResource(R.drawable.empty_token);
+                }
+            }
+        }
     }
 
     public void placePiece(int colNum)
     {
-
+        game.doTurn(colNum);
+        updateBoard();
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -107,18 +138,25 @@ public class GameActivity extends AppCompatActivity {
         switch(v.getId())
         {
             case R.id.btnCol1Place:
+                placePiece(1);
                 break;
             case R.id.btnCol2Place:
+                placePiece(2);
                 break;
             case R.id.btnCol3Place:
+                placePiece(3);
                 break;
             case R.id.btnCol4Place:
+                placePiece(4);
                 break;
             case R.id.btnCol5Place:
+                placePiece(5);
                 break;
             case R.id.btnCol6Place:
+                placePiece(6);
                 break;
             case R.id.btnCol7Place:
+                placePiece(7);
                 break;
             case R.id.btnReset:
                 reset();
@@ -132,6 +170,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void reset()
     {
-        // TODO: Reset Board
+        game.resetGame();
+        updateBoard();
     }
 }
